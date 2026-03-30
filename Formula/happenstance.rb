@@ -3,8 +3,8 @@ class Happenstance < Formula
 
   desc "Search your network and research people via the Happenstance CLI"
   homepage "https://happenstance.ai"
-  url "https://files.pythonhosted.org/packages/53/54/b1370bb422b778842a67b6e03dac997b1ef000e2a3f0df295755c50f4dea/happenstance-0.2.0.tar.gz"
-  sha256 "deafa580f4fc041f4ae3c1b661a14cd8b2dc55d836fc52382d13000f8f77b357"
+  url "https://files.pythonhosted.org/packages/2c/a7/801b08a926c19942b5451e19e541fb2ead998e3e1c749319edf736e656c7/happenstance-0.2.1.tar.gz"
+  sha256 "9e4c1bbb2c786145a9c81e572c29441059748892a55896b8c7342fec0af5dc4f"
   license "MIT"
 
   depends_on "python@3.12"
@@ -25,8 +25,8 @@ class Happenstance < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/56/5d/c814546c2333ceea4ba42262d8c4d55763003e767fa169adc693bd524478/requests-2.33.0-py3-none-any.whl"
-    sha256 "3324635456fa185245e24865e810cecec7b4caf933d7eb133dcde67d48cee69b"
+    url "https://files.pythonhosted.org/packages/d7/8e/7540e8a2036f79a125c1d2ebadf69ed7901608859186c856fa0388ef4197/requests-2.33.1-py3-none-any.whl"
+    sha256 "4e6d1ef462f3626a1f0a0a9c42dd93c63bad33f9f1c1937509b8c5c8718ab56a"
   end
 
   resource "urllib3" do
@@ -35,7 +35,13 @@ class Happenstance < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.12")
+    venv.pip_install resources
+    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "pip",
+           "--python=#{libexec}/bin/python", "install", "--verbose",
+           "--no-deps", "--ignore-installed", "--no-compile", buildpath
+    (bin/"hpn").write_env_script libexec/"bin/hpn", PATH: "#{libexec}/bin:$PATH"
+    (bin/"happenstance").write_env_script libexec/"bin/happenstance", PATH: "#{libexec}/bin:$PATH"
   end
 
   test do
