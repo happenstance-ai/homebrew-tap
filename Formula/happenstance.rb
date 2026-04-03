@@ -3,8 +3,8 @@ class Happenstance < Formula
 
   desc "Search your network and research people via the Happenstance CLI"
   homepage "https://happenstance.ai"
-  url "https://files.pythonhosted.org/packages/2c/a7/801b08a926c19942b5451e19e541fb2ead998e3e1c749319edf736e656c7/happenstance-0.2.1.tar.gz"
-  sha256 "9e4c1bbb2c786145a9c81e572c29441059748892a55896b8c7342fec0af5dc4f"
+  url "https://files.pythonhosted.org/packages/3d/74/2ebb90d5cce4a670c3e0e979ac5a57333f0ea0c8c3ba2dfcb4497cb222bc/happenstance-0.2.2.tar.gz"
+  sha256 "a610f4bdb2812e44e86d00092a2d9437c22bf1c8e7e585de99f6126c4ac2dd67"
   license "MIT"
 
   depends_on "python@3.12"
@@ -15,8 +15,8 @@ class Happenstance < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/2a/68/687187c7e26cb24ccbd88e5069f5ef00eba804d36dde11d99aad0838ab45/charset_normalizer-3.4.6-py3-none-any.whl"
-    sha256 "947cf925bc916d90adba35a64c82aace04fa39b46b52d4630ece166655905a69"
+    url "https://files.pythonhosted.org/packages/db/8f/61959034484a4a7c527811f4721e75d02d653a35afb0b6054474d8185d4c/charset_normalizer-3.4.7-py3-none-any.whl"
+    sha256 "3dce51d0f5e7951f8bb4900c257dad282f49190fdbebecd4ba99bcc41fef404d"
   end
 
   resource "idna" do
