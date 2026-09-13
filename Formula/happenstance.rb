@@ -7,7 +7,7 @@ class Happenstance < Formula
   sha256 "a610f4bdb2812e44e86d00092a2d9437c22bf1c8e7e585de99f6126c4ac2dd67"
   license "MIT"
 
-  depends_on "python@3.12"
+  depends_on "python@3.14"
 
   resource "certifi" do
     url "https://files.pythonhosted.org/packages/a3/c2/24167ea9858356b47a87a50d39908bfdb72ceeefe0041586e704e5376b3a/certifi-2026.7.22.tar.gz"
@@ -35,17 +35,10 @@ class Happenstance < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec, "python3.12")
-    venv.pip_install resources
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "pip",
-           "--python=#{libexec}/bin/python", "install", "--verbose",
-           "--no-deps", "--ignore-installed", "--no-compile", buildpath
-    (bin/"hpn").write_env_script libexec/"bin/hpn", PATH: "#{libexec}/bin:$PATH"
-    (bin/"happenstance").write_env_script libexec/"bin/happenstance", PATH: "#{libexec}/bin:$PATH"
+    virtualenv_install_with_resources
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/hpn --version")
   end
 end
-
