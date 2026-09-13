@@ -40,5 +40,11 @@ class Happenstance < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/hpn --version")
+
+    output = shell_output("#{bin}/hpn config set --api-key test-key")
+    assert_match '"status": "ok"', output
+
+    output = shell_output("#{bin}/hpn config show")
+    assert_match '"api_key": "***"', output
   end
 end
