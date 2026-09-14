@@ -3,8 +3,8 @@ class Happenstance < Formula
 
   desc "Search your network and research people via the Happenstance CLI"
   homepage "https://happenstance.ai"
-  url "https://files.pythonhosted.org/packages/3d/74/2ebb90d5cce4a670c3e0e979ac5a57333f0ea0c8c3ba2dfcb4497cb222bc/happenstance-0.2.2.tar.gz"
-  sha256 "a610f4bdb2812e44e86d00092a2d9437c22bf1c8e7e585de99f6126c4ac2dd67"
+  url "https://files.pythonhosted.org/packages/a4/af/dea7153cb378ab1ec33d649cb9dd6c18b3b0ad658bb660544511568ab4d7/happenstance-0.2.3.tar.gz"
+  sha256 "f5dc5ba955d4e194874db6921f2dcf25146120d756cd9a5a856d80db853e4f47"
   license "MIT"
 
   depends_on "python@3.14"
